@@ -1,0 +1,96 @@
+import dev.spartan.Dependencies
+
+plugins {
+  id("org.jetbrains.kotlin.jvm")
+  id("io.github.gradle-nexus.publish-plugin")
+}
+
+group = "com.c0x12c.exposed.postgis"
+version = "1.0.0"
+
+repositories {
+  mavenCentral()
+}
+
+nexusPublishing {
+  repositories {
+    sonatype {
+      username = System.getenv("SONATYPE_USERNAME")
+      password = System.getenv("SONATYPE_PASSWORD")
+      nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+      snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+    }
+  }
+}
+
+subprojects { p ->
+  apply(plugin: "kotlin")
+  apply(plugin: "java")
+  apply(plugin: "maven-publish")
+
+  repositories {
+    mavenCentral()
+  }
+
+  java {
+    toolchain {
+      languageVersion = JavaLanguageVersion.of(17)
+    }
+    withJavadocJar()
+    withSourcesJar()
+  }
+
+  kotlin {
+    jvmToolchain {
+      languageVersion.set(JavaLanguageVersion.of(17))
+    }
+  }
+
+  dependencies {
+    implementation(Dependencies.Kotlin.stdlib)
+    testImplementation(Dependencies.Testing.jupiter)
+    testImplementation(Dependencies.Testing.strickt)
+  }
+
+  tasks {
+    test {
+      useJUnitPlatform()
+    }
+  }
+
+  publishing {
+    publications {
+      mavenJava(MavenPublication) {
+        from(components["java"])
+        afterEvaluate {
+          artifactId = p.name
+          group = group
+          version = version
+        }
+
+        pom {
+          name = p.name
+          url = "https://spartan-dev.io/"
+          description = "Exposed SQL PostGIS extension"
+          licenses {
+            license {
+              name = "Apache License, Version 2.0"
+            }
+          }
+          developers {
+            developer {
+              id = "spartan-dev"
+              name = "Spartan Dev"
+              email = "chan@c0x12c.com"
+            }
+          }
+          scm {
+            connection = "scm:git://git@github.com:c0x12c/exposed-postgis.git"
+            url = "https://github.com/c0x12c/exposed-postgis.git"
+          }
+        }
+      }
+    }
+  }
+}
+
