@@ -1,0 +1,15 @@
+version: '3.6'
+services:
+  db:
+    image: postgis/postgis:14-3.3
+    restart: always
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: test
+    command: postgres -N 500
+    ports:
+      - 5432:5432
+    volumes:
+      - type: tmpfs
+        target: /var/lib/postgresql/data
