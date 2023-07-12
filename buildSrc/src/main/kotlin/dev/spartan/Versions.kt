@@ -1,4 +1,4 @@
-package com.c0x12c
+package dev.spartan
 
 object Versions {
   const val kotlin = "1.8.20"

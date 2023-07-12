@@ -1,11 +1,11 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import com.c0x12c.Dependencies
+import dev.spartan.Dependencies
 
 plugins {
   id("org.jetbrains.kotlin.jvm")
 }
 
-group = "com.c0x12c.exposed.postgis"
+group = "dev.spartan.exposed.postgis"
 version = "1.0.0"
 
 repositories {

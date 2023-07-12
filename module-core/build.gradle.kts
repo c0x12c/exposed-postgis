@@ -1,4 +1,4 @@
-import com.c0x12c.Dependencies
+import dev.spartan.Dependencies
 
 dependencies {
   implementation(Dependencies.Database.postgisJdbc)

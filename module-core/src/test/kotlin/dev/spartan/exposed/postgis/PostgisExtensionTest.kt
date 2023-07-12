@@ -1,4 +1,4 @@
-package com.c0x12c.exposed.postgis
+package dev.spartan.exposed.postgis
 
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
@@ -19,7 +19,6 @@ import org.postgis.PGgeometry
 import org.postgis.Point
 import org.postgis.Polygon
 import org.postgresql.PGConnection
-import strikt.api.expect
 import strikt.api.expectThat
 import strikt.assertions.isEqualTo
 

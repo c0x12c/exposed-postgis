@@ -1,4 +1,4 @@
-package com.c0x12c.exposed.postgis
+package dev.spartan.exposed.postgis
 
 import org.jetbrains.exposed.sql.Column
 import org.jetbrains.exposed.sql.Table

@@ -1,4 +1,4 @@
-package com.c0x12c.exposed.postgis
+package dev.spartan.exposed.postgis
 
 import kotlin.reflect.KClass
 import org.jetbrains.exposed.sql.ColumnType
