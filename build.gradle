@@ -27,6 +27,7 @@ subprojects { p ->
   apply(plugin: "kotlin")
   apply(plugin: "java")
   apply(plugin: "maven-publish")
+  apply(plugin: "signing")
 
   repositories {
     mavenCentral()
@@ -91,6 +92,10 @@ subprojects { p ->
         }
       }
     }
+  }
+
+  signing {
+    sign publishing.publications["mavenJava"]
   }
 }
 
