@@ -167,5 +167,28 @@ class AddressDao(
 }
 ```
 
+## Publishing
+Make sure you define the following environment variables:
+```kt
+ext["signing.keyId"] = System.getenv("SIGNING_KEY_ID")
+ext["signing.password"] = System.getenv("SIGNING_PASSWORD")
+ext["signing.secretKeyRingFile"] = System.getenv("SIGNING_SECRET_KEY_RING_FILE")
+ext["ossrhUsername"] = System.getenv("OSSRH_USERNAME")
+ext["ossrhPassword"] = System.getenv("OSSRH_PASSWORD")
+```
+or create a `local.properties` file:
+```
+ossrhPassword=...
+ossrhUsername=...
+signing.keyId=...
+signing.password=...
+signing.secretKeyRingFile=...
+```
+Then run `../gradlew publishAllPublicationsToSonatypeRepository` to publish the library to Maven Central.  
+For more details see:
+- https://dev.to/kotlin/how-to-build-and-publish-a-kotlin-multiplatform-library-going-public-4a8k
+- https://getstream.io/blog/publishing-libraries-to-mavencentral-2021/#your-first-release
+
+
 
 

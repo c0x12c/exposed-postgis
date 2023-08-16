@@ -9,7 +9,6 @@ import org.jetbrains.exposed.sql.Op
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.doubleLiteral
 import org.jetbrains.exposed.sql.stringLiteral
-import org.jetbrains.exposed.sql.stringLiteral
 import org.postgis.Geometry
 
 class IntersectFunction(e: Expression<*>, g: Geometry) :
